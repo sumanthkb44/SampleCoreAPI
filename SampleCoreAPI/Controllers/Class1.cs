@@ -29,6 +29,12 @@ namespace SampleCoreAPI.Controllers
         {
             return $"Employee ID: {EmployeeId}, Name: {Name}, Hired On: {HireDate.ToShortDateString()}";
         }
-
+        public int GetYearsOfService()
+        {
+            var today = DateTime.Today;
+            int years = today.Year - HireDate.Year;
+            if (HireDate.Date > today.AddYears(-years)) years--;
+            return years;
+        }
     }
 }
