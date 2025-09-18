@@ -30,12 +30,15 @@ namespace SampleCoreAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStudent(int id)
         {
+            // Intentional conflict: different logic for merge conflict testing
             var student = await _Students.GetStudent(id);
             if (student == null)
             {
-                return BadRequest("Student not found in this branch.");
+                // This message is different from other branches
+                return NotFound("Student does not exist in this branch.");
             }
-            return Ok(student.StudentName);
+            // Return the whole student object instead of just the name
+            return Ok(student);
         }
 
         [HttpGet("{id}")]
