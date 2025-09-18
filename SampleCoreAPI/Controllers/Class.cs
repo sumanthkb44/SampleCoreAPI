@@ -7,8 +7,8 @@ namespace SampleCoreAPI.Controllers
 {
     public class Class
     {
-        string str = "Aswadewfwefewef";
-        string testString = "creating for PR change";
-        string name = "Anuradha";
+         public int1 Id { get; set; }
+        public string1 Name { get; set; }
+        public decimal1 Price { get; set; }
     }
 }
