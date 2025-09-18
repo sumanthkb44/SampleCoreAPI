@@ -49,6 +49,43 @@ namespace SampleCoreAPI.Controllers
             else
                 return NotFound();
         }
+        // Complicated conflicting code block
+        [HttpPost("process")]
+        public async Task<IActionResult> ProcessStudent([FromBody] Student student)
+        {
+            // Simulate a complicated business logic with intentional conflict
+            if (student == null || string.IsNullOrWhiteSpace(student.StudentName))
+            {
+                // In one branch, this might throw an exception, in another, it might return BadRequest
+                throw new ArgumentException("Student data is invalid."); // Conflict: Exception vs. BadRequest
+            }
 
+            // Simulate a complex calculation
+            int age;
+            if (!int.TryParse(student.StudentAge, out age))
+            {
+                // In another branch, this could log and continue, here we return error
+                return BadRequest("Invalid age format.");
+            }
+
+            // Simulate a conflicting update logic
+            if (age < 18)
+            {
+                // In one branch, this might allow underage students, in another, it blocks
+                return StatusCode(StatusCodes.Status403Forbidden, "Student must be at least 18 years old.");
+            }
+
+            // Simulate a conflicting data transformation
+            var processedStudent = new Student
+            {
+                StudentID = student.StudentID,
+                StudentName = student.StudentName.ToUpper(), // In another branch, might use ToLower()
+                StudentAge = (age + 1).ToString(), // In another branch, might not increment age
+                StudentCourse = student.StudentCourse
+            };
+
+            // In one branch, this might save to DB, here we just return the processed object
+            return Ok(processedStudent);
+        }
     }
 }
