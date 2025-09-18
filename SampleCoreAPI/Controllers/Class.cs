@@ -8,5 +8,7 @@ namespace SampleCoreAPI.Controllers
     public class Class
     {
         string str = "Aswadewfwefewef";
+        string testString = "creating for PR change";
+        string name = "Anuradha";
     }
 }

@@ -36,5 +36,14 @@ namespace SampleCoreAPI.Controllers
                 return NotFound();
         }
 
-   }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetStudentData(int id)
+        {
+            if (_Students.GetStudent(id) != null)
+                return Ok(await _Students.GetStudent(id));
+            else
+                return NotFound();
+        }
+
+    }
 }

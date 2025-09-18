@@ -8,5 +8,7 @@ namespace SampleCoreAPI.Controllers
     public class Class1
     {
         string Str = "scwewedwe";
+        string Str2 = "scwewedwe2334";
+        string Str3 = "scwewedwe23434";
     }
 }
