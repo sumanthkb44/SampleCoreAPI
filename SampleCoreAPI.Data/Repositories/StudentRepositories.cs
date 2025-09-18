@@ -26,5 +26,9 @@ namespace SampleCoreAPI.Data.Repositories
         {
             return await Task.Run(() => Stud.FirstOrDefault(x => x.StudentID == id));
         }
+        public async Task<Student> GetCustomer(int id)
+        {
+            return await Task.Run(() => Stud.FirstOrDefault(x => x.StudentID == id));
+        }
     }
 }

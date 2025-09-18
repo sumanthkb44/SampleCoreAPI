@@ -8,5 +8,6 @@ namespace SampleCoreAPI.Controllers
     public class Class
     {
         string str = "Aswadewfwefewef";
+        string model = "dfdhdh";
     }
 }

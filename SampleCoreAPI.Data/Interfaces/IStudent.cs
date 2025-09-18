@@ -11,5 +11,6 @@ namespace SampleCoreAPI.Data.Interfaces
         Task<List<Student>> GetAllStudents();
 
         Task<Student> GetStudent(int id);
+        Task<Student> GetCustomer(int id);
     }
 }
