@@ -31,7 +31,9 @@ namespace SampleCoreAPI.Controllers
         public async Task<IActionResult> GetStudent(int id)
         {
             if (_Students.GetStudent(id) != null)
-                return Ok(await _Students.GetStudent(id));
+            {
+              return Ok(await _Students.GetStudent(id));
+            }
             else
                 return NotFound();
         }
