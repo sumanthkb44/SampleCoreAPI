@@ -8,6 +8,7 @@ namespace SampleCoreAPI.Controllers
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string Category { get; set; }
+        public string Value { get; set; }
         public bool IsAvailable { get; set; }
         public DateTime CreatedDate { get; set; }
 
