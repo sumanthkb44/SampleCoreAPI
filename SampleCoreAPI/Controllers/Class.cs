@@ -10,5 +10,6 @@ namespace SampleCoreAPI.Controllers
          public int1 Id { get; set; }
         public string1 Name { get; set; }
         public decimal1 Price { get; set; }
+        public decimal Price { get; set; }
     }
 }
