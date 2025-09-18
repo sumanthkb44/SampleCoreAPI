@@ -28,12 +28,10 @@ namespace SampleCoreAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetStudent(int id)
+        public async Task<IActionResult> GetStudents(int id)
         {
             if (_Students.GetStudent(id) != null)
-            {
               return Ok(await _Students.GetStudent(id));
-            }
             else
                 return NotFound();
         }
