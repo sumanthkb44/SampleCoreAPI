@@ -30,10 +30,12 @@ namespace SampleCoreAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStudent(int id)
         {
-            if (_Students.GetStudent(id) != null)
-                return Ok(await _Students.GetStudent(id));
-            else
-                return NotFound();
+            var student = await _Students.GetStudent(id);
+            if (student == null)
+            {
+                return BadRequest("Student not found in this branch.");
+            }
+            return Ok(student.StudentName);
         }
 
         [HttpGet("{id}")]
