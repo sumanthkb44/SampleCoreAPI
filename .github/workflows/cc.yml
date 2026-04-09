@@ -2,7 +2,7 @@ name: License Clearance
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
 
 jobs:
