@@ -1,0 +1,10 @@
+name: License Clearance
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  clearing:
+    uses: sumanthkb44/.github/.github/workflows/continuous-clearing.yml@main
