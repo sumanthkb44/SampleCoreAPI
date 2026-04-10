@@ -23,6 +23,18 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
+      - name: Debug – list generated files after dotnet restore
+        run: |
+          echo ">>> Repo root:"
+          pwd
+          ls -la
+      
+          echo ">>> Searching for project.assets.json"
+          find . -name project.assets.json -type f
+      
+          echo ">>> Searching for obj directories"
+          find . -type d -name obj
+
   clearing:
     name: Continuous Clearing
     needs: build
