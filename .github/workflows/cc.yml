@@ -23,17 +23,18 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Debug – list generated files after dotnet restore
+      - name: Verify project.assets.json
         run: |
-          echo ">>> Repo root:"
-          pwd
-          ls -la
-      
-          echo ">>> Searching for project.assets.json"
-          find . -name project.assets.json -type f
-      
-          echo ">>> Searching for obj directories"
-          find . -type d -name obj
+          find . -name project.assets.json
+
+      # Upload the restored project folders as pipeline artifact
+      - name: Upload CC input artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cc-input
+          path: |
+            SampleCoreAPI
+            SampleCoreAPI.Data
 
   clearing:
     name: Continuous Clearing
