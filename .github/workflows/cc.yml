@@ -4,7 +4,26 @@ on:
   push:
     branches: [ master ]
   pull_request:
+  workflow_dispatch:
 
 jobs:
+  build:
+    name: Build & Restore
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
   clearing:
+    name: Continuous Clearing
+    needs: build
     uses: sumanthkb44/.github/.github/workflows/continuous-clearing.yml@main
